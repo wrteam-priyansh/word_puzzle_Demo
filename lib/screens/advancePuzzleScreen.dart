@@ -43,9 +43,11 @@ class _AdvancePuzzleScreenState extends State<AdvancePuzzleScreen> {
   Widget puzzleOptionContainer(String letter) {
     return GestureDetector(
       onTap: () {
+        //! menas we need to add back button
         if (letter == "!") {
           submittedAnswer[currentSelectedBox] = "*";
           /*
+          //for moving current index back
           if (submittedAnswer[currentSelectedBox] == "*") {
             if (currentSelectedBox != 0) {
               currentSelectedBox--;
@@ -60,7 +62,9 @@ class _AdvancePuzzleScreenState extends State<AdvancePuzzleScreen> {
 
           setState(() {});
         } else {
+          //adding new letter
           submittedAnswer[currentSelectedBox] = letter;
+          //moving box one step
           if (currentSelectedBox != submittedAnswer.length - 1) {
             currentSelectedBox++;
           }
@@ -99,6 +103,7 @@ class _AdvancePuzzleScreenState extends State<AdvancePuzzleScreen> {
     List<Widget> listOfWidgets = [];
 
     for (var i = 0; i < submittedAnswer.length; i++) {
+      //adding text
       String text = submittedAnswer.isEmpty
           ? "*"
           : (submittedAnswer.length - 1) >= i
@@ -134,7 +139,7 @@ class _AdvancePuzzleScreenState extends State<AdvancePuzzleScreen> {
             height: 15.0,
           ),
           //
-          _buildOptions("ARDVRENMLYUHJUKI!"),
+          _buildOptions("ARDVRENMLYUHJUKI!"), //options
           SizedBox(
             height: 15.0,
           ),
@@ -148,6 +153,7 @@ class _AdvancePuzzleScreenState extends State<AdvancePuzzleScreen> {
                             content: Text("Please fill all the boxes"),
                           ));
                 } else {
+                  //building answer
                   String answer = "";
                   for (var i = 0; i < submittedAnswer.length; i++) {
                     answer += submittedAnswer[i];
